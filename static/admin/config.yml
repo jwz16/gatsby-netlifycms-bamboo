@@ -9,8 +9,8 @@ backend:
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
-site_url: https://your-site.com
-logo_url: https://your-site.com/images/logo.svg
+site_url: https://banbooblog.netlify.app
+logo_url: https://banbooblog.netlify.app/images/logo.svg
 
 publish_mode: editorial_workflow
 
