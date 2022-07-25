@@ -24,14 +24,10 @@ const NavBar = () => {
             {isDesktop ? (
               <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
-                  {['Product', 'Pricing', 'Resources', 'Support'].map((item) => (
+                  {['Home', 'Blogs', 'Category', 'About', 'Contact'].map((item) => (
                     <Button key={item}>{item}</Button>
                   ))}
                 </ButtonGroup>
-                <HStack spacing="3">
-                  <Button variant="ghost">Sign in</Button>
-                  <Button variant="primary">Sign up</Button>
-                </HStack>
               </Flex>
             ) : (
               <IconButton
