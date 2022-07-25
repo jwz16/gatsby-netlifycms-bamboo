@@ -16,10 +16,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^3.0.1",
+    "@chakra-ui/react": "^2.2.4",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@types/netlify-identity-widget": "^1.9.3",
+    "framer-motion": "^6.5.1",
     "gatsby": "^4.19.2",
     "gatsby-plugin-image": "^2.19.0",
+    "gatsby-plugin-layout": "^3.19.0",
     "gatsby-plugin-manifest": "^4.19.0",
     "gatsby-plugin-mdx": "^3.19.0",
     "gatsby-plugin-netlify-cms": "^6.19.0",
@@ -30,9 +37,11 @@
     "gatsby-source-filesystem": "^4.19.0",
     "gatsby-transformer-sharp": "^4.19.0",
     "netlify-cms-app": "^2.15.72",
+    "netlify-identity-widget": "^1.9.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.4.0",
     "sass": "^1.54.0"
   },
   "devDependencies": {

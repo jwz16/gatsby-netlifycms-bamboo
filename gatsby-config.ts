@@ -28,7 +28,13 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
-  }]
+  }, {
+    resolve: '@chakra-ui/gatsby-plugin',
+    options: {
+      resetCSS: true,
+      isUsingColorMode: true
+    },
+  }, "gatsby-plugin-layout"]
 };
 
 export default config;
