@@ -10,7 +10,7 @@ backend:
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
 site_url: https://banbooblog.netlify.app
-logo_url: https://banbooblog.netlify.app/images/logo.svg
+logo_url: https://banbooblog.netlify.app/images/hehua-bamboo.jpg
 
 publish_mode: editorial_workflow
 
