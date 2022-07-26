@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Container,
   Flex,
   HStack,
   IconButton,
@@ -16,28 +15,26 @@ import { Logo } from './logo'
 const NavBar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true })
   return (
-    <Box as="section" pb={{ base: '12', md: '24' }}>
+    <Box as="section" pb={{ base: '5', md: '10' }}>
       <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
-        <Container py={{ base: '4', lg: '5' }}>
-          <HStack spacing="10" justify="space-between">
-            <Logo />
-            {isDesktop ? (
-              <Flex justify="space-between" flex="1">
-                <ButtonGroup variant="link" spacing="8">
-                  {['Home', 'Blogs', 'Category', 'About', 'Contact'].map((item) => (
-                    <Button key={item}>{item}</Button>
-                  ))}
-                </ButtonGroup>
-              </Flex>
-            ) : (
-              <IconButton
-                variant="ghost"
-                icon={<FiMenu fontSize="1.25rem" />}
-                aria-label="Open Menu"
-              />
-            )}
-          </HStack>
-        </Container>
+        <HStack px={10} py={5} spacing="10" justify="space-between" >
+          <Logo />
+          {isDesktop ? (
+            <Flex justify="space-between" flex="1">
+              <ButtonGroup variant="link" spacing="8">
+                {['Blogs', 'Arts', 'Category', 'About', 'Contact'].map((item) => (
+                  <Button key={item}>{item}</Button>
+                ))}
+              </ButtonGroup>
+            </Flex>
+          ) : (
+            <IconButton
+              variant="ghost"
+              icon={<FiMenu fontSize="1.25rem" />}
+              aria-label="Open Menu"
+            />
+          )}
+        </HStack>
       </Box>
     </Box>
   )

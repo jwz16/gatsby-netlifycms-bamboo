@@ -1,8 +1,8 @@
 {
-  "name": "my-gatsby-site",
+  "name": "bamblog",
   "version": "1.0.0",
   "private": true,
-  "description": "my-gatsby-site",
+  "description": "Bamboo Blog",
   "author": "Jingwei Zhang",
   "keywords": [
     "gatsby"
