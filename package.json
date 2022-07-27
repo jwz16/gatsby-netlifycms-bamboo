@@ -2,7 +2,7 @@
   "name": "bamblog",
   "version": "1.0.0",
   "private": true,
-  "description": "Bamboo Blog",
+  "description": "Bamboo Blog, based on Gatsby, NetlifyCMS and Typescript",
   "author": "Jingwei Zhang",
   "keywords": [
     "gatsby"
