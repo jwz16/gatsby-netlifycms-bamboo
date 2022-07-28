@@ -1,25 +1,26 @@
-import { Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import { graphql } from "gatsby";
 import React from "react";
+import { BlogCard } from '../components/blog_card';
 
 const BlogsPage = (props: { data: Queries.Query }) => {
   const data = props.data;
   return (
     <>
-    <Heading>All Blogs</Heading>
-
-    <ul>
-    {
-      data.allMdx.nodes.map(node => (
-        <li key={node?.frontmatter?.title}>
-          <Heading as='h3' size='lg'>{node?.frontmatter?.title}</Heading>
-          <Text fontSize='xl'>
-            {node?.excerpt}
-          </Text>
-        </li>
-      ))
-    }
-    </ul>
+    <Flex>
+      {
+        data.allMdx.nodes.map(node => (
+          node.frontmatter == null ? (<></>)
+          :
+          (<BlogCard
+            key={node.frontmatter.title}
+            title={node.frontmatter.title}
+            excerpt={node.excerpt}
+            datetime={node.frontmatter.date as string}
+          />)
+        ))
+      }
+    </Flex>
     </>
   )
 }
@@ -32,6 +33,7 @@ export const pageQuery = graphql`
       nodes {
         frontmatter {
           title
+          date
         }
         excerpt
       }
