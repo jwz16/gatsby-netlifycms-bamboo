@@ -5,12 +5,14 @@ import {
   Flex,
   HStack,
   IconButton,
+  Spacer,
   useBreakpointValue,
   useColorModeValue,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { Logo } from './logo'
+import { Link } from 'gatsby'
 
 const NavBar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true })
@@ -19,11 +21,12 @@ const NavBar = () => {
       <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
         <HStack px={10} py={5} spacing="10" justify="space-between" >
           <Logo />
+          <Spacer/>
           {isDesktop ? (
-            <Flex justify="space-between" flex="1">
+            <Flex justify="space-between">
               <ButtonGroup variant="link" spacing="8">
                 {['Blogs', 'Arts', 'Category', 'About', 'Contact'].map((item) => (
-                  <Button key={item}>{item}</Button>
+                  <Button as={Link} key={item} to='/blogs' >{item}</Button>
                 ))}
               </ButtonGroup>
             </Flex>
