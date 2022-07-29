@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { graphql } from "gatsby";
 import React from "react";
 import { BlogCard } from '../components/blog_card';
@@ -7,7 +7,7 @@ const BlogsPage = (props: { data: Queries.Query }) => {
   const data = props.data;
   return (
     <>
-    <Flex>
+    <VStack spacing={20} alignItems={'stretch'} px={40}>
       {
         data.allMdx.nodes.map(node => (
           node.frontmatter == null ? (<></>)
@@ -15,12 +15,13 @@ const BlogsPage = (props: { data: Queries.Query }) => {
           (<BlogCard
             key={node.frontmatter.title}
             title={node.frontmatter.title}
+            featuredimage={node.frontmatter.featuredimage || ''}
             excerpt={node.excerpt}
             datetime={node.frontmatter.date as string}
           />)
         ))
       }
-    </Flex>
+    </VStack>
     </>
   )
 }
@@ -33,9 +34,10 @@ export const pageQuery = graphql`
       nodes {
         frontmatter {
           title
+          featuredimage
           date
         }
-        excerpt
+        excerpt(pruneLength: 500)
       }
     }
   }
