@@ -14,7 +14,7 @@ const BlogsPage = (props: { data: Queries.Query }) => {
           :
           (<BlogCard
             key={node.frontmatter.title}
-            title={node.frontmatter.title}
+            title={node.frontmatter.title || ''}
             featuredimage={node.frontmatter.featuredimage || ''}
             excerpt={node.excerpt}
             datetime={node.frontmatter.date as string}
@@ -34,7 +34,11 @@ export const pageQuery = graphql`
       nodes {
         frontmatter {
           title
-          featuredimage
+          featuredimage {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
           date
         }
         excerpt(pruneLength: 500)

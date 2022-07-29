@@ -9,44 +9,68 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: ["gatsby-plugin-netlify-cms", "gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", `gatsby-remark-images`, {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "./static/images/hehua-bamboo.jpg"
-    }
-  }, {
-    resolve: `gatsby-plugin-mdx`,
-    options: {
-      gatsbyRemarkPlugins: [
-        {
-          resolve: `gatsby-remark-images`,
-          options: {
-            maxWidth: 1200,
+  plugins: [
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "uploads",
+        "path": `${__dirname}/static/images/uploads`
+      },
+      __key: "images/uploads"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "images",
+        "path": "./src/images/"
+      },
+      __key: "images"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": "./src/pages/"
+      },
+      __key: "pages"
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-remark-images",
+    "gatsby-plugin-image",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-relative-images`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
           },
-        },
-      ],
+        ],
+      },
     },
-  }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+    "gatsby-plugin-netlify-cms",
+    "gatsby-plugin-sass",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        "icon": "./static/images/hehua-bamboo.jpg"
+      }
     },
-    __key: "images"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+    {
+      resolve: '@chakra-ui/gatsby-plugin',
+      options: {
+        resetCSS: true,
+        isUsingColorMode: true
+      },
     },
-    __key: "pages"
-  }, {
-    resolve: '@chakra-ui/gatsby-plugin',
-    options: {
-      resetCSS: true,
-      isUsingColorMode: true
-    },
-  }, "gatsby-plugin-layout"]
+    "gatsby-plugin-layout"
+  ]
 };
 
 export default config;
