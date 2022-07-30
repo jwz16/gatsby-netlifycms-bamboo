@@ -25,9 +25,11 @@ const NavBar = () => {
           {isDesktop ? (
             <Flex justify="space-between">
               <ButtonGroup variant="link" spacing="8">
-                {['Blogs', 'Arts', 'Category', 'About', 'Contact'].map((item) => (
-                  <Button as={Link} key={item} to='/blogs' >{item}</Button>
-                ))}
+                {
+                  ['Blogs', 'Arts', 'Category', 'About', 'Contact'].map((item) => (
+                    <Button as={Link} key={item} to='/blogs' >{item}</Button>
+                  ))
+                }
               </ButtonGroup>
             </Flex>
           ) : (
