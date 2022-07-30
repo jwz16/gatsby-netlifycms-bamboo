@@ -101,3 +101,6 @@ src/gatsby-types.d.ts
 
 # TernJS port file
 .tern-port
+
+# Typescript generated output
+ts_out

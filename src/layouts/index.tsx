@@ -4,7 +4,7 @@ import { Box, Flex } from '@chakra-ui/react'
 
 export default function Layout(props: { children: React.ReactNode }) {
   return (
-    <Box>
+    <Box px='15%'>
       <NavBar/>
       <Flex as='main' padding={10} flexDirection='column'>
         {props.children}

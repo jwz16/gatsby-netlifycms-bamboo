@@ -7,7 +7,7 @@ const BlogsPage = (props: { data: Queries.Query }) => {
   const data = props.data;
   return (
     <>
-    <VStack spacing={20} alignItems={'stretch'} px={40}>
+    <VStack spacing={20} alignItems={'stretch'} px={10}>
       {
         data.allMdx.nodes.map(node => (
           node.frontmatter == null ? (<></>)
@@ -15,7 +15,7 @@ const BlogsPage = (props: { data: Queries.Query }) => {
           (<BlogCard
             key={node.frontmatter.title}
             title={node.frontmatter.title || ''}
-            featuredimage={node.frontmatter.featuredimage || ''}
+            featuredimage={node.frontmatter.featuredimage}
             excerpt={node.excerpt}
             datetime={node.frontmatter.date as string}
           />)
@@ -36,12 +36,19 @@ export const pageQuery = graphql`
           title
           featuredimage {
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(
+                width: 300
+                height: 300
+                layout: FIXED
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+                transformOptions: {fit: COVER, cropFocus: ATTENTION}
+              )
             }
           }
           date
         }
-        excerpt(pruneLength: 500)
+        excerpt(pruneLength: 300)
       }
     }
   }
