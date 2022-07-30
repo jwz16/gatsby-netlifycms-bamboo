@@ -7,14 +7,16 @@ import {
   IconButton,
   Spacer,
   useBreakpointValue,
+  useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react'
 import * as React from 'react'
-import { FiMenu } from 'react-icons/fi'
+import { FiMenu, FiSun, FiMoon } from 'react-icons/fi'
 import { Logo } from './logo'
 import { Link } from 'gatsby'
 
 const NavBar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   const isDesktop = useBreakpointValue({ base: false, lg: true })
   return (
     <Box as="section" pb={{ base: '5', md: '10' }}>
@@ -30,6 +32,13 @@ const NavBar = () => {
                     <Button as={Link} key={item} to='/blogs' >{item}</Button>
                   ))
                 }
+
+                <IconButton
+                  variant='ghost'
+                  icon={ colorMode == 'light' ? <FiSun fontSize="1.25rem"/> : <FiMoon fontSize="1.25rem"/>}
+                  onClick={toggleColorMode}
+                  aria-label="Toggle Theme"
+                />
               </ButtonGroup>
             </Flex>
           ) : (
