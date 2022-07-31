@@ -1,10 +1,10 @@
 import { Heading } from "@chakra-ui/react";
 import React from "react";
 
-const AboutPage = () => {
+const ContactPage = () => {
   return (
-    <Heading>About</Heading>
+    <Heading>Contact</Heading>
   )
 }
 
-export default AboutPage;
+export default ContactPage;

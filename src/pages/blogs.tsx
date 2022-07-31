@@ -9,12 +9,13 @@ const BlogsPage = (props: { data: Queries.Query }) => {
     <>
     <VStack spacing={20} alignItems={'stretch'} px={10}>
       {
-        data.allMdx.nodes.map(node => (
+        data.allMdx.nodes.filter(node => node.slug!.indexOf("blog/") == 0).map(node => (
           node.frontmatter == null ? (<></>)
           :
           (<BlogCard
             key={node.frontmatter.title}
             title={node.frontmatter.title || ''}
+            slug={node.slug!}
             featuredimage={node.frontmatter.featuredimage}
             excerpt={node.excerpt}
             datetime={node.frontmatter.date as string}
@@ -48,6 +49,8 @@ export const pageQuery = graphql`
           }
           date
         }
+
+        slug
         excerpt(pruneLength: 300)
       }
     }

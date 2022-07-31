@@ -15,6 +15,12 @@ import { FiMenu, FiSun, FiMoon } from 'react-icons/fi'
 import { Logo } from './logo'
 import { Link } from 'gatsby'
 
+const links = [
+  {'name': 'Blogs', 'to': '/blogs'},
+  {'name': 'About', 'to': '/about'},
+  {'name': 'Contact', 'to': '/contact'}
+]
+
 const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDesktop = useBreakpointValue({ base: false, lg: true })
@@ -28,8 +34,8 @@ const NavBar = () => {
             <Flex justify="space-between">
               <ButtonGroup variant="link" spacing="8">
                 {
-                  ['Blogs', 'Arts', 'Category', 'About', 'Contact'].map((item) => (
-                    <Button as={Link} key={item} to='/blogs' >{item}</Button>
+                  links.map((item) => (
+                    <Button as={Link} key={item.name} to={item.to} >{item.name}</Button>
                   ))
                 }
 
