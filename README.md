@@ -1,6 +1,9 @@
-Gatsby-NetlifyCMS Blog
+Bamblog
 ===
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3721347e-fe6a-4d29-8a21-792f733ae23c/deploy-status)](https://app.netlify.com/sites/banbooblog/deploys)
+
+![](./src/images/logo-bamblog.svg)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3721347e-fe6a-4d29-8a21-792f733ae23c/deploy-status)](https://app.netlify.com/sites/bamblog/deploys)
 
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/jwz16/gatsby-netlifycms-bamboo&amp;stack=cms"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 

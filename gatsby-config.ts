@@ -59,7 +59,7 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        "icon": "./static/images/hehua-bamboo.jpg"
+        "icon": "./static/images/logo.svg"
       }
     },
     {

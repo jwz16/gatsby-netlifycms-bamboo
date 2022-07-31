@@ -22,7 +22,7 @@ const NavBar = () => {
     <Box as="section" pb={{ base: '5', md: '10' }}>
       <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
         <HStack px={10} py={5} spacing="10" justify="space-between" >
-          <Logo />
+          <Link to='/'> <Logo/> </Link>
           <Spacer/>
           {isDesktop ? (
             <Flex justify="space-between">

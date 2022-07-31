@@ -10,9 +10,7 @@ backend:
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
 site_url: https://bamblog.netlify.app
-logo_url: https://bamblog.netlify.app/images/hehua-bamboo.jpg
-
-publish_mode: editorial_workflow
+logo_url: /images/logo-bamblog.svg
 
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
