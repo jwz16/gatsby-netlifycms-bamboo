@@ -34,6 +34,14 @@ const config: GatsbyConfig = {
       },
       __key: "pages"
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: "posts",
+        path: "./src/posts/"
+      },
+      __key: "posts"
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-remark-images",
@@ -58,12 +66,7 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.ts`,
-      },
-    },
+    'gatsby-plugin-netlify-cms',
     "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",

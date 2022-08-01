@@ -26,7 +26,7 @@ export const BlogCard = ({title, slug, featuredimage, excerpt, datetime}: BlogCa
         </HStack>
 
         <Text fontSize='xl' overflow='hidden'>{excerpt}</Text>
-        <Button as={Link} to={`/${slug}`}>CONTINUE READING</Button>
+        <Button as={Link} to={`/blog/${slug}`}>CONTINUE READING</Button>
       </VStack>
     </HStack>
   </Card>

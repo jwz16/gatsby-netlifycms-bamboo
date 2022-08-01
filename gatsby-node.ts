@@ -2,41 +2,41 @@ import { GatsbyNode } from 'gatsby';
 import { createRemoteFileNode, createFilePath } from 'gatsby-source-filesystem';
 import path from 'path';
 
-export const createPages : GatsbyNode['createPages'] = async ({ actions: {createPage}, graphql }) => {
-  // Query for markdown nodes to use in creating pages.
-  const result: {errors?: any, data?: Queries.Query} = await graphql(
-    `
-      {
-        allMdx(limit: 1000) {
-          nodes {
-            id
-            slug
-          }
-        }
-      }
-    `
-  );
+// export const createPages : GatsbyNode['createPages'] = async ({ actions: {createPage}, graphql }) => {
+//   // Query for markdown nodes to use in creating pages.
+//   const result: {errors?: any, data?: Queries.Query} = await graphql(
+//     `
+//       {
+//         allMdx(limit: 1000) {
+//           nodes {
+//             id
+//             slug
+//           }
+//         }
+//       }
+//     `
+//   );
   
-  // Handle errors
-  if (result.errors) {
-    console.error(`Error while running GraphQL query.`)
-    return
-  }
-  // Create pages for each markdown file.
-  const blogPostTemplate = path.resolve(`src/templates/blog-post.tsx`);
-  result.data?.['allMdx'].nodes.forEach((node: Queries.Mdx) => {
-    const path = node.slug!;
-    createPage({
-      path,
-      component: blogPostTemplate,
-      // In your blog post template's graphql query, you can use pagePath
-      // as a GraphQL variable to query for data from the markdown file.
-      context: {
-        id: node.id,
-      },
-    })
-  })
-}
+//   // Handle errors
+//   if (result.errors) {
+//     console.error(`Error while running GraphQL query.`)
+//     return
+//   }
+//   // Create pages for each markdown file.
+//   const blogPostTemplate = path.resolve(`src/templates/blog-post.tsx`);
+//   result.data?.['allMdx'].nodes.forEach((node: Queries.Mdx) => {
+//     const path = node.slug!;
+//     createPage({
+//       path,
+//       component: blogPostTemplate,
+//       // In your blog post template's graphql query, you can use pagePath
+//       // as a GraphQL variable to query for data from the markdown file.
+//       context: {
+//         id: node.id,
+//       },
+//     })
+//   })
+// }
 
 export const onCreateNode : GatsbyNode<Queries.Mdx>['onCreateNode'] = async ({ node, createNodeId, getNode, actions: { createNodeField, createNode }, cache}) => {
   // TODO: Need further debugging, current implementation still can't let GatsbyImage to load remote image by URL

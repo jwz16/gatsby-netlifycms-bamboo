@@ -15,8 +15,8 @@ const BlogPost = (props: { data: Queries.Query }) => {
 export default BlogPost;
 
 export const pageQuery = graphql`
-  query BlogPostById($id: String){
-    mdx(id: { eq: $id }) {
+  query BlogPostById($slug: String){
+    mdx(slug: { eq: $slug }) {
       frontmatter {
         title
       }

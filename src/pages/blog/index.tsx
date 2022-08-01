@@ -31,7 +31,7 @@ export default BlogIndexPage;
 
 export const pageQuery = graphql`
   query BlogIndexPageQuery {
-    allMdx(filter: {slug: {glob: "blog/*"}}, sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         frontmatter {
           title
