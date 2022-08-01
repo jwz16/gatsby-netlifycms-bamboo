@@ -13,24 +13,24 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "uploads",
-        "path": `${__dirname}/static/images/uploads`
+        name: "uploads",
+        path: `${__dirname}/static/images/uploads`
       },
       __key: "images/uploads"
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "images",
-        "path": "./src/images/"
+        name: "images",
+        path: "./src/images/"
       },
       __key: "images"
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "pages",
-        "path": "./src/pages/"
+        name: "pages",
+        path: "./src/pages/"
       },
       __key: "pages"
     },
@@ -49,10 +49,21 @@ const config: GatsbyConfig = {
               maxWidth: 1200,
             },
           },
+          {
+            resolve: "gatsby-remark-copy-linked-files",
+            options: {
+              destinationDir: "static",
+            },
+          },
         ],
       },
     },
-    "gatsby-plugin-netlify-cms",
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.ts`,
+      },
+    },
     "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",

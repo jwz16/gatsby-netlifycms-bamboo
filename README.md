@@ -15,7 +15,7 @@ This blog app is built by `Gatsby` and `NetlifyCMS`, `NetlifyCMS` use `git-gatew
 * Chakra UI
 
 ## Run
-`yarn develop`
+`yarn dev`
 
 ## Build
 `yarn build`

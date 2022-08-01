@@ -1,7 +1,44 @@
 import { GatsbyNode } from 'gatsby';
-import { createRemoteFileNode } from 'gatsby-source-filesystem';
+import { createRemoteFileNode, createFilePath } from 'gatsby-source-filesystem';
+import path from 'path';
 
-export const onCreateNode : GatsbyNode<Queries.Mdx>['onCreateNode'] = async ({ node, createNodeId, actions: { createNodeField, createNode }, cache}) => {
+export const createPages : GatsbyNode['createPages'] = async ({ actions: {createPage}, graphql }) => {
+  // Query for markdown nodes to use in creating pages.
+  const result: {errors?: any, data?: Queries.Query} = await graphql(
+    `
+      {
+        allMdx(limit: 1000) {
+          nodes {
+            id
+            slug
+          }
+        }
+      }
+    `
+  );
+  
+  // Handle errors
+  if (result.errors) {
+    console.error(`Error while running GraphQL query.`)
+    return
+  }
+  // Create pages for each markdown file.
+  const blogPostTemplate = path.resolve(`src/templates/blog-post.tsx`);
+  result.data?.['allMdx'].nodes.forEach((node: Queries.Mdx) => {
+    const path = node.slug!;
+    createPage({
+      path,
+      component: blogPostTemplate,
+      // In your blog post template's graphql query, you can use pagePath
+      // as a GraphQL variable to query for data from the markdown file.
+      context: {
+        id: node.id,
+      },
+    })
+  })
+}
+
+export const onCreateNode : GatsbyNode<Queries.Mdx>['onCreateNode'] = async ({ node, createNodeId, getNode, actions: { createNodeField, createNode }, cache}) => {
   // TODO: Need further debugging, current implementation still can't let GatsbyImage to load remote image by URL
   if (node.internal.type === 'Mdx' &&
       node.frontmatter &&
@@ -36,6 +73,15 @@ export const onCreateNode : GatsbyNode<Queries.Mdx>['onCreateNode'] = async ({ n
         value: featureimage,
       });
     }
+  }
+
+  if (node.internal.type === 'Mdx') {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: 'slug',
+      node,
+      value,
+    });
   }
 };
 

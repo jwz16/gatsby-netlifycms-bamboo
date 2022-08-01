@@ -16,7 +16,7 @@ import { Logo } from './logo'
 import { Link } from 'gatsby'
 
 const links = [
-  {'name': 'Blogs', 'to': '/blogs'},
+  {'name': 'Blog', 'to': '/blog'},
   {'name': 'About', 'to': '/about'},
   {'name': 'Contact', 'to': '/contact'}
 ]

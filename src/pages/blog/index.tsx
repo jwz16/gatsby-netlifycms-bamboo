@@ -1,19 +1,19 @@
 import { VStack } from "@chakra-ui/react";
 import { graphql } from "gatsby";
 import React from "react";
-import { BlogCard } from '../components/blog_card';
+import { BlogCard } from '../../components/blog-card';
 
-const BlogsPage = (props: { data: Queries.Query }) => {
+const BlogIndexPage = (props: { data: Queries.Query }) => {
   const data = props.data;
   return (
     <>
     <VStack spacing={20} alignItems={'stretch'} px={10}>
       {
-        data.allMdx.nodes.filter(node => node.slug!.indexOf("blog/") == 0).map(node => (
+        data.allMdx.nodes.map(node => (
           node.frontmatter == null ? (<></>)
           :
           (<BlogCard
-            key={node.frontmatter.title}
+            key={node.id}
             title={node.frontmatter.title || ''}
             slug={node.slug!}
             featuredimage={node.frontmatter.featuredimage}
@@ -27,11 +27,11 @@ const BlogsPage = (props: { data: Queries.Query }) => {
   )
 }
 
-export default BlogsPage;
+export default BlogIndexPage;
 
 export const pageQuery = graphql`
-  query BlogsPageQuery {
-    allMdx {
+  query BlogIndexPageQuery {
+    allMdx(filter: {slug: {glob: "blog/*"}}, sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         frontmatter {
           title
@@ -50,6 +50,7 @@ export const pageQuery = graphql`
           date
         }
 
+        id
         slug
         excerpt(pruneLength: 300)
       }
