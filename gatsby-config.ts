@@ -76,12 +76,7 @@ const config: GatsbyConfig = {
         "icon": "./static/images/logo.svg"
       }
     },
-    {
-      resolve: '@chakra-ui/gatsby-plugin',
-      options: {
-        resetCSS: true,
-      },
-    },
+    '@chakra-ui/gatsby-plugin',
     "gatsby-plugin-layout"
   ]
 };

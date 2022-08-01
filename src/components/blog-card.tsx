@@ -12,11 +12,12 @@ type BlogCardProps = {
   datetime: string
 }
 
+
 export const BlogCard = ({title, slug, featuredimage, excerpt, datetime}: BlogCardProps) => (
   <Card px={0} py={0} overflow='hidden' transform='translateZ(0)'>
     <HStack spacing={10} alignItems='stretch'>
       <Box width={300} height={300}>
-        <GatsbyImage image={getImage(featuredimage?.childImageSharp?.gatsbyImageData!)!} alt='' />
+        <GatsbyImage image={getImage(featuredimage!.childImageSharp!.gatsbyImageData!)!} alt='' />
       </Box>
 
       <VStack alignItems='flex-start' justifyContent='flex-start' py={5} paddingRight={10} width='100%' height={300}>

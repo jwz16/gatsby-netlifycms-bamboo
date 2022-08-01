@@ -60,8 +60,6 @@ export const onCreateNode : GatsbyNode<Queries.Mdx>['onCreateNode'] = async ({ n
             name: 'featuredimage',
             value: remoteFileNode.id
           });
-
-          node.frontmatter.featuredimage = remoteFileNode.relativePath
         }
       } catch (error) {
         console.error(error);
