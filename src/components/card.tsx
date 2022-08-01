@@ -6,7 +6,7 @@ export const Card = (props: BoxProps) => (
     bg={useColorModeValue('white', 'gray.700')}
     py='8'
     px={{ base: '4', md: '10' }}
-    shadow='0px 0px 10px 1px rgba(0, 0, 0, .2)'
+    shadow='xl'
     rounded={{ sm: 'lg', md: 'xl' }}
     {...props}
   />

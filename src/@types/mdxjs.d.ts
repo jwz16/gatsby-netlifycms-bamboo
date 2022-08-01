@@ -1,19 +1,9 @@
-
-
 declare module "@mdx-js/react" {
-  import React from "react"
+  import React from "react";
+  import { Components } from 'react-markdown';
   type MDXProps = {
     children: React.ReactNode
-    components: {
-      h1?: unknown
-      h2?: unknown,
-      h3?: unknown,
-      h4?: unknown,
-      h5?: unknown,
-      h6?: unknown,
-      p?: unknown,
-      img?: unknown,
-    }
+    components: Components
   }
   export class MDXProvider extends React.Component<MDXProps> {}
 }
