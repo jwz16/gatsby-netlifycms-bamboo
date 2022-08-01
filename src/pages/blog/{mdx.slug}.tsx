@@ -27,9 +27,8 @@ const BlogPost = ({data} : BlogPostProps) => {
       </Heading>
 
       <MDXProvider components={mdxStyles}>
-      <MDXRenderer>{data.mdx!.body}</MDXRenderer>
+        <MDXRenderer>{data.mdx!.body}</MDXRenderer>
       </MDXProvider>
-      
     </>
   );
 }
