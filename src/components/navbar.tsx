@@ -5,7 +5,6 @@ import {
   Flex,
   HStack,
   IconButton,
-  position,
   Spacer,
   useBreakpointValue,
   useColorMode,
