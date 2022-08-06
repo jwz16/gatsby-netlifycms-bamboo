@@ -12,7 +12,7 @@ type BlogPostProps = {
 const BlogPost = ({data} : BlogPostProps) => {
   return (
     <>
-      <Heading as='h1' size='4xl' noOfLines={1}>
+      <Heading as='h1' size='4xl' noOfLines={1} pb={10}>
         {data.mdx?.frontmatter?.title}
       </Heading>
 
