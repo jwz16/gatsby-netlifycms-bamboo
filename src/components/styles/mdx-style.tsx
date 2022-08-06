@@ -32,13 +32,13 @@ const MdxStyles = () => {
     h5: (props: Record<string, unknown>) => <Heading as="h5" size="sm" {...props} />,
     h6: (props: Record<string, unknown>) => <Heading as="h6" size="xs" {...props} />,
     a: (props: Record<string, unknown>) => <Link as='a' color='teal.500' isExternal {...props} />,
-    p: (props: Record<string, unknown>) => <Text lineHeight={2} paddingBottom="4" fontSize="lg" {...props} />,
+    p: (props: Record<string, unknown>) => <Text mx={0} px={0} lineHeight={2} paddingBottom="4" fontSize="lg" {...props} />,
     img: (props: Record<string, unknown>) => <Image mb={4} {...props} />,
     pre: (props: Record<string, unknown>) => <CodeBlock {...props}/>,
     blockquote: (props: Record<string, unknown>) => <BlockQuote {...props} />,
-    inlineCode: (props: Record<string, unknown>) => <Code my={2} px={2} color='red.500' borderRadius='0.3rem' overflow='hidden' {...props} />,
-    ul: (props: Record<string, unknown>) => <UnorderedList {...props} />,
-    ol: (props: Record<string, unknown>) => <OrderedList {...props} />,
+    inlineCode: (props: Record<string, unknown>) => <InlineCode {...props} />,
+    ul: (props: Record<string, unknown>) => <UnorderedList px={2} {...props} />,
+    ol: (props: Record<string, unknown>) => <OrderedList px={2} {...props} />,
     li: (props: Record<string, unknown>) => <ListItem {...props} />,
     text: (props: Record<string, unknown>) => <Text {...props} />,
     table: (props: Record<string, unknown>) => <Table {...props} />,
@@ -68,7 +68,7 @@ const CodeBlock = (props: Record<string, unknown>) => {
       language={language as Language}
     >
       {({className, style, tokens, getLineProps, getTokenProps}) => (
-        <chakra.pre borderRadius='1rem' className={className} padding={5} style={{...style}}>
+        <chakra.pre borderRadius='1rem' my={2} className={className} padding={5} style={{...style}}>
           {tokens.map((line, i) => (
             <chakra.div key={i} {...getLineProps({line, key: i})}>
               {line.map((token, key) => (
@@ -107,5 +107,20 @@ const BlockQuote = (props: Record<string, unknown>) => {
       <Box bg='white' w={10} h="100%" />
       {props.children as React.ReactNode}
     </chakra.blockquote>
+  )
+}
+
+const InlineCode = (props: Record<string, unknown>) => {
+  return (
+    <chakra.code
+      mx={0}
+      my={0}
+      px={1}
+      bg={useColorModeValue('gray.100', 'blue.900')}
+      color='red.500'
+      borderRadius='0.3rem'
+      overflow='hidden'
+      {...props}
+    />
   )
 }
