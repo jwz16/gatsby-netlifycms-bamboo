@@ -14,7 +14,9 @@ import {
   UnorderedList,
   OrderedList,
   Divider,
-  Link
+  Link,
+  useColorModeValue,
+  Box
 } from "@chakra-ui/react"
 import { chakra } from '@chakra-ui/system';
 import Highlight, {defaultProps, Language} from "prism-react-renderer";
@@ -33,7 +35,7 @@ const MdxStyles = () => {
     p: (props: Record<string, unknown>) => <Text lineHeight={2} paddingBottom="4" fontSize="lg" {...props} />,
     img: (props: Record<string, unknown>) => <Image mb={4} {...props} />,
     pre: (props: Record<string, unknown>) => <CodeBlock {...props}/>,
-    blockquote: (props: Record<string, unknown>) => <chakra.blockquote {...props} />,
+    blockquote: (props: Record<string, unknown>) => <BlockQuote {...props} />,
     inlineCode: (props: Record<string, unknown>) => <Code my={2} px={2} color='red.500' borderRadius='0.3rem' overflow='hidden' {...props} />,
     ul: (props: Record<string, unknown>) => <UnorderedList {...props} />,
     ol: (props: Record<string, unknown>) => <OrderedList {...props} />,
@@ -77,16 +79,33 @@ const CodeBlock = (props: Record<string, unknown>) => {
         </chakra.pre>
       )}
     </Highlight>
-    // <Code whiteSpace='break-spaces' display='block' w='full' p='2' {...props} />
   )
 }
 
 const Table = (props: Record<string, unknown>) => {
   return (
-    <TableContainer>
+    <TableContainer my={5}>
       <TableChakra>
         {props.children as React.ReactNode}
       </TableChakra>
     </TableContainer>
+  )
+}
+
+const BlockQuote = (props: Record<string, unknown>) => {
+  return (
+    <chakra.blockquote
+      bg={useColorModeValue('gray.50', 'gray.600')}
+      my={5}
+      mx={3}
+      px={3}
+      pt={3}
+      borderLeft={10}
+      borderStyle='solid'
+      borderColor={useColorModeValue('gray.300', 'white.600')}
+    >
+      <Box bg='white' w={10} h="100%" />
+      {props.children as React.ReactNode}
+    </chakra.blockquote>
   )
 }
