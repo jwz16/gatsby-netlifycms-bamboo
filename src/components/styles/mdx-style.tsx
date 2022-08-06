@@ -66,7 +66,7 @@ const CodeBlock = (props: Record<string, unknown>) => {
       language={language as Language}
     >
       {({className, style, tokens, getLineProps, getTokenProps}) => (
-        <chakra.pre borderRadius='1rem' className={className} style={{...style, padding: '20px'}}>
+        <chakra.pre borderRadius='1rem' className={className} padding={5} style={{...style}}>
           {tokens.map((line, i) => (
             <chakra.div key={i} {...getLineProps({line, key: i})}>
               {line.map((token, key) => (

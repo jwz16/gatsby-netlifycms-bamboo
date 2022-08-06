@@ -5,6 +5,7 @@ import {
   Flex,
   HStack,
   IconButton,
+  position,
   Spacer,
   useBreakpointValue,
   useColorMode,
@@ -25,8 +26,13 @@ const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDesktop = useBreakpointValue({ base: false, lg: true })
   return (
-    <Box as="section" pb={{ base: '5', md: '10' }}>
-      <Box as="nav" bg="bg-surface" boxShadow={useColorModeValue('sm', 'sm-dark')}>
+    <Box as="section" pb={{ base: '5', md: '10' }} position='sticky' top={0} zIndex={999}>
+      <Box
+        as="nav"
+        boxShadow={useColorModeValue('sm', 'sm-dark')}
+        bg={useColorModeValue('whiteAlpha.100', 'grayAlpha.100')}
+        backdropFilter='blur(10px)'
+      >
         <HStack px={10} py={5} spacing="10" justify="space-between" >
           <Link to='/'> <Logo/> </Link>
           <Spacer/>
